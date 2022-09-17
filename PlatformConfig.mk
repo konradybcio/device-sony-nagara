@@ -78,6 +78,11 @@ BOARD_EXCLUDE_KERNEL_FROM_RECOVERY_IMAGE := true
 BOARD_COPY_BOOT_IMAGE_TO_TARGET_FILES :=
 BOARD_USES_FULL_RECOVERY_IMAGE := true
 
+# https://source.android.com/docs/core/bootloader/partitions/generic-boot#system-as-root
+# System-as-root isn't supported for devices that use GKI. On such devices, BOARD_BUILD_SYSTEM_ROOT_IMAGE must be empty.
+# System-as-root also isn't supported for devices that use dynamic partitions.
+BOARD_BUILD_SYSTEM_ROOT_IMAGE :=
+
 # https://source.android.com/devices/bootloader/partitions/vendor-boot-partitions#build-support
 # >= 3 is required for (and turns on) PRODUCT_BUILD_VENDOR_BOOT_IMAGE
 BOARD_BOOT_HEADER_VERSION := 4
