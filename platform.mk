@@ -76,6 +76,9 @@ AUDIO_FEATURE_ENABLED_GKI := true
 
 # Dynamic Partitions: Enable DP
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
+# Enable block-level deduplication
+# https://source.android.com/docs/core/ota/dynamic_partitions/implement#dyanimic-partitions-sizing
+BOARD_EXT4_SHARE_DUP_BLOCKS := true
 
 # Display
 TARGET_HAS_HDR_DISPLAY := true
