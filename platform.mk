@@ -440,9 +440,24 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     vendor.gatekeeper.disable_spu=true
 
+# https://source.android.com/docs/core/bootloader/partitions/generic-boot#first-stage-console-2
+# First stage console
+PRODUCT_PACKAGES += \
+    linker.vendor_ramdisk \
+    shell_and_utilities_vendor_ramdisk \
+    adbd.vendor_ramdisk
+
+# Metadata checksums
+PRODUCT_PACKAGES += \
+    resize2fs.vendor_ramdisk \
+    tune2fs.vendor_ramdisk
+
 $(call inherit-product, device/sony/common/common.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
+
+# https://source.android.com/docs/core/bootloader/partitions/generic-boot#product-configurations
 $(call inherit-product, $(SRC_TARGET_DIR)/product/generic_ramdisk.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
+
+# https://source.android.com/docs/core/bootloader/partitions/generic-boot#making-e2fsck-available
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/compression.mk)
